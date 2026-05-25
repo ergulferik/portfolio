@@ -1481,25 +1481,24 @@ hr.xp-rule {
     height: 16px;
   }
 
-  /* Lang switch: flag-only, square buttons that fill the taskbar
-     content row. align-self: stretch makes the chip as tall as the
-     taskbar; aspect-ratio:1 on each button keeps them square. */
+  /* Lang switch: flag-only, square buttons sized to match the open-
+     window task buttons (22px tall) so the bottom row feels uniform.
+     Vertically centered in the taller taskbar gradient. */
   .lang-switch {
-    align-self: stretch;
-    height: auto;
+    align-self: center;
+    height: 22px;
     margin: 0 2px 0 4px;
     border-radius: 2px;
   }
   .lang-switch-btn {
-    aspect-ratio: 1 / 1;
-    width: auto;
-    height: 100%;
+    width: 22px;
+    height: 22px;
     padding: 0;
     gap: 0;
     justify-content: center;
   }
   .lang-switch-flag {
-    font-size: 13px;
+    font-size: 11px;
     line-height: 1;
     filter: none;
   }
