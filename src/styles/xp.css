@@ -1481,22 +1481,25 @@ hr.xp-rule {
     height: 16px;
   }
 
-  /* Lang switch: just the flag, packed tight. iOS emoji glyphs include
-     visual padding on top of font-size, so we cap line-height + use
-     a fixed button width so the chip stays small. */
+  /* Lang switch: flag-only, square buttons that fill the taskbar
+     content row. align-self: stretch makes the chip as tall as the
+     taskbar; aspect-ratio:1 on each button keeps them square. */
   .lang-switch {
-    height: 20px;
+    align-self: stretch;
+    height: auto;
     margin: 0 2px 0 4px;
     border-radius: 2px;
   }
   .lang-switch-btn {
-    width: 22px;
+    aspect-ratio: 1 / 1;
+    width: auto;
+    height: 100%;
     padding: 0;
     gap: 0;
     justify-content: center;
   }
   .lang-switch-flag {
-    font-size: 10px;
+    font-size: 13px;
     line-height: 1;
     filter: none;
   }
