@@ -1482,12 +1482,16 @@ hr.xp-rule {
   }
 
   .lang-switch {
-    height: 26px;
+    height: 22px;
     margin: 0 2px 0 4px;
   }
   .lang-switch-btn {
-    padding: 0 5px;
-    gap: 2px;
+    padding: 0 4px;
+    gap: 0;
+  }
+  .lang-switch-flag {
+    font-size: 11px;
+    line-height: 1;
   }
   .lang-switch-code {
     display: none; /* flag only */
