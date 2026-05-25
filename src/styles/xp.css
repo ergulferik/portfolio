@@ -70,7 +70,11 @@ a {
 .desktop {
   position: relative;
   width: 100vw;
+  /* `dvh` accounts for mobile browser chrome (Safari/Chrome collapsible
+     address bar). Without this, the taskbar at `bottom: 0` falls behind
+     the browser UI on phones. Falls back to 100vh on older browsers. */
   height: 100vh;
+  height: 100dvh;
   background-image: url('./bliss.jpg');
   background-size: cover;
   background-position: center;
@@ -1410,7 +1414,7 @@ hr.xp-rule {
     left: 0 !important;
     top: 0 !important;
     width: 100vw !important;
-    height: calc(100dvh - 34px) !important;
+    height: calc(100dvh - 34px - env(safe-area-inset-bottom)) !important;
     min-width: 0;
     min-height: 0;
     box-shadow: none;
@@ -1438,9 +1442,13 @@ hr.xp-rule {
     padding: 12px;
   }
 
-  /* Taskbar — compact, icons only */
+  /* Taskbar — compact, icons only. Height extended by safe-area-inset
+     so the gradient covers the iOS home-indicator zone; the inner
+     content area stays at 34px because padding-bottom soaks up the
+     inset (with the global box-sizing: border-box). */
   .taskbar {
-    height: 34px;
+    height: calc(34px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
   }
   .start-button {
     min-width: 56px;
@@ -1497,14 +1505,15 @@ hr.xp-rule {
     font-size: 10px;
   }
 
-  /* Start menu — near-fullscreen overlay */
+  /* Start menu — near-fullscreen overlay, lifted above the taskbar
+     including the safe-area zone. */
   .start-menu {
     position: absolute;
     left: 4px;
     right: 4px;
-    bottom: 38px;
+    bottom: calc(38px + env(safe-area-inset-bottom));
     width: auto;
-    height: calc(100dvh - 46px);
+    height: calc(100dvh - 46px - env(safe-area-inset-bottom));
   }
   .start-menu-body {
     grid-template-columns: 1fr;
