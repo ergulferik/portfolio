@@ -42,8 +42,9 @@ interface ProjectSource {
 }
 
 /** Single source of truth for the portrait used on the About page and
- *  Start-menu header. */
-export const PROFILE_PHOTO = '/assets/me/profile.jpg';
+ *  Start-menu header. Prefixed with Vite's BASE_URL so subpath deploys
+ *  (e.g. /portfolio/) resolve the file correctly. */
+export const PROFILE_PHOTO = `${import.meta.env.BASE_URL}assets/me/profile.jpg`;
 
 const PROFILE_SRC: ProfileSource = {
   name: 'Ergül Ferik',

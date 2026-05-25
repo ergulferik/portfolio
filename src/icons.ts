@@ -1,4 +1,5 @@
-const PNG = (n: string) => `/assets/icons/${n}.png`;
+const BASE = import.meta.env.BASE_URL;
+const PNG = (n: string) => `${BASE}assets/icons/${n}.png`;
 
 export const ICONS = {
   user: PNG('user'),
@@ -13,5 +14,5 @@ export const ICONS = {
   document: PNG('document'),
   trayVolume: PNG('tray-volume'),
   trayNetwork: PNG('tray-network'),
-  startFlag: '/favicon.png',
+  startFlag: `${BASE}favicon.png`,
 };
