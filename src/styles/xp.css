@@ -1382,3 +1382,207 @@ hr.xp-rule {
   outline-offset: -1px;
   border-radius: 3px;
 }
+
+/* ============================================================
+   Mobile / narrow-viewport overrides.
+   The XP aesthetic is desktop-first; below 768px we collapse
+   chrome and force windows to occupy the viewport so the site
+   stays usable on phones.
+   ============================================================ */
+@media (max-width: 768px) {
+  /* Desktop icons — smaller footprint, single column */
+  .desktop-icon {
+    width: 64px;
+    height: 76px;
+    padding: 3px;
+  }
+  .desktop-icon-img {
+    width: 36px;
+    height: 36px;
+  }
+  .desktop-icon-label {
+    font-size: 10px;
+  }
+
+  /* Windows — full viewport above the taskbar.
+     Overriding the JS-set inline left/top/width/height. */
+  .window {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: calc(100dvh - 34px) !important;
+    min-width: 0;
+    min-height: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  /* Bigger title-bar buttons for tappable touch targets */
+  .title-bar {
+    height: 28px;
+  }
+  .title-bar-controls button {
+    min-width: 28px;
+    min-height: 28px;
+  }
+
+  /* Explorer two-pane → stack, hide sidebar (mostly navigation
+     duplicates that are also reachable from the start menu). */
+  .explorer {
+    grid-template-columns: 1fr;
+  }
+  .explorer-sidebar {
+    display: none;
+  }
+  .explorer-main {
+    padding: 12px;
+  }
+
+  /* Taskbar — compact, icons only */
+  .taskbar {
+    height: 34px;
+  }
+  .start-button {
+    min-width: 56px;
+    padding: 0 14px 0 8px;
+    font-size: 13px;
+  }
+  .start-button > span {
+    display: none; /* keep just the XP logo */
+  }
+  .start-button img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .taskbar-windows {
+    gap: 2px;
+    padding: 3px 2px;
+  }
+  .taskbar-btn {
+    flex: 0 0 36px;
+    width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+  .taskbar-btn .label {
+    display: none;
+  }
+  .taskbar-btn img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .lang-switch {
+    height: 26px;
+    margin: 0 2px 0 4px;
+  }
+  .lang-switch-btn {
+    padding: 0 5px;
+    gap: 2px;
+  }
+  .lang-switch-code {
+    display: none; /* flag only */
+  }
+
+  .system-tray {
+    padding: 0 6px 0 10px;
+    min-width: 0;
+    gap: 4px;
+  }
+  .tray-icon {
+    display: none; /* hide volume/network */
+  }
+  .tray-clock {
+    font-size: 10px;
+  }
+
+  /* Start menu — near-fullscreen overlay */
+  .start-menu {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: 38px;
+    width: auto;
+    height: calc(100dvh - 46px);
+  }
+  .start-menu-body {
+    grid-template-columns: 1fr;
+    background: #fff;
+    overflow-y: auto;
+  }
+  .start-col {
+    padding: 6px 4px;
+  }
+
+  /* Modal dialogs — width-clamped */
+  .lang-modal-window {
+    width: calc(100vw - 24px);
+  }
+  .logoff-window {
+    width: calc(100vw - 24px);
+  }
+  .logoff-tiles {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .logoff-tile {
+    flex-direction: row;
+    text-align: left;
+    gap: 12px;
+    padding: 10px;
+  }
+  .logoff-tile-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Project / experience / CV content — tighter typography */
+  .page-title {
+    font-size: 13px;
+  }
+  .page-subtitle {
+    font-size: 11px;
+  }
+  .exp-role {
+    font-size: 12px;
+  }
+  .exp-desc {
+    font-size: 11px;
+  }
+  .project-item {
+    padding: 6px 0;
+  }
+
+  /* IE iframe should fill the page area */
+  .ie-toolbar {
+    flex-wrap: wrap;
+  }
+  .address-bar input {
+    font-size: 10px;
+  }
+}
+
+/* Tiny phones — drop a row of chrome */
+@media (max-width: 380px) {
+  .desktop-icon {
+    width: 60px;
+    height: 72px;
+  }
+  .start-button {
+    min-width: 50px;
+    padding: 0 10px 0 6px;
+  }
+  .taskbar-btn {
+    flex: 0 0 32px;
+    width: 32px;
+  }
+}
+
+/* Touch devices: hide the dotted icon focus outline that doesn't
+   render meaningfully on a tap-driven UI. */
+@media (hover: none) {
+  .desktop-icon.selected {
+    outline: none;
+  }
+}
